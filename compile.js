@@ -8,19 +8,19 @@ const source = fs.readFileSync(inboxPath, 'utf8');
 
 // settings for building
 let input = {
-    language: 'Solidity',
-    sources: {
-        'Inbox.sol': {
-            content: source
-        }
-    },
-    settings: {
-        outputSelection: {
-            '*': {
-                '*': ['*']
-            }
-        }
+  language: 'Solidity',
+  sources: {
+    'Inbox.sol': {
+      content: source
     }
+  },
+  settings: {
+    outputSelection: {
+      '*': {
+        '*': ['*']
+      }
+    }
+  }
 };
 
 // start build and get the build output
@@ -40,6 +40,6 @@ fs.writeFile(
     if (err)
       console.log(err);
     else {
-      console.log("File written successfully\n");      
+      console.log("File written successfully\n");
     }
   });
