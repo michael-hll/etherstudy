@@ -1,0 +1,5 @@
+# contracts json
+*.sol.json
+
+# Dependency directories
+node_modules/
