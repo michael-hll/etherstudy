@@ -43,7 +43,8 @@ describe('Inbox', () => {
 
   it("can change the message", async () => {
     const newMsg = "bye";
-    await inbox.methods.setMessage(newMsg).send({ from: accounts[0] });
+    const transaction_hash = await inbox.methods.setMessage(newMsg).send({ from: accounts[0] });
+    //console.log('hash:', transaction_hash);
 
     const msg = await inbox.methods.message().call();
     assert.strictEqual(msg, newMsg);
