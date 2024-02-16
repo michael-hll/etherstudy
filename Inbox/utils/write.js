@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function writeFile(filename, jsonObj) {
+function WriteFile(filename, jsonObj) {
   fs.writeFile(
     filename,
     JSON.stringify(jsonObj, null, 2),
@@ -18,4 +18,4 @@ function writeFile(filename, jsonObj) {
     });
 }
 
-module.exports = writeFile;
+module.exports = WriteFile;

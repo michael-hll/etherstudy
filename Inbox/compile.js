@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const solc = require('solc');
-const writeFile = require('./utils/WriteFile');
+const WriteFile = require('./utils/write');
 
 const inboxPath = path.resolve(__dirname, 'contracts', 'Inbox.sol');
 // Read 'Inbox.sol' file from the 'contracts' folder
@@ -40,4 +40,4 @@ let input = {
 const output = JSON.parse(solc.compile(JSON.stringify(input)));
 module.exports = output.contracts["Inbox.sol"].Inbox;
 // debug used
-writeFile(inboxPath + '.json', output);
+WriteFile(inboxPath + '.json', output);
