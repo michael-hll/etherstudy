@@ -19,7 +19,6 @@ function App() {
   const [value, setValue] = useState("");
   const [message, setMessage] = useState("");
   const [currentAccount, setCurrentAccount] = useState("");
-  const [winner, setWinner] = useState("");
 
   const [enteringLottery, setEnteringLottery] = useState(false);
   const [pickingWinner, setPickingWinner] = useState(false);
