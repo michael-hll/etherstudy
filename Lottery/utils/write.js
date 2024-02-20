@@ -13,7 +13,7 @@ function WriteFile(filename, jsonObj) {
       if (err)
         console.log(err);
       else {
-        console.log("File written successfully");
+        console.log("File written successfully: " + filename);
       }
     });
 }
