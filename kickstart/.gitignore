@@ -1,0 +1,12 @@
+# contracts json
+*.sol.json
+*.build.json
+
+# Dependency directories
+node_modules/
+
+# settings
+settings.json
+
+# build
+ethereum/build/

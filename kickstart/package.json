@@ -1,0 +1,21 @@
+{
+  "name": "kickstart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@metamask/detect-provider": "^2.0.0",
+    "@truffle/hdwallet-provider": "^2.1.6",
+    "dotenv": "^16.4.5",
+    "fs-extra": "^11.2.0",
+    "ganache": "^7.9.2",
+    "mocha": "^10.3.0",
+    "solc": "^0.8.24",
+    "web3": "^4.5.0"
+  }
+}
