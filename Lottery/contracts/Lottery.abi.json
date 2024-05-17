@@ -38,7 +38,13 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "callerTimestamp",
+        "type": "uint256"
+      }
+    ],
     "name": "pickWinner",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -58,6 +64,25 @@
         "internalType": "address payable",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "callerTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "random",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",

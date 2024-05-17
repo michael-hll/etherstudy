@@ -37,6 +37,13 @@ describe('Lottery', () => {
     assert.ok(lottery.options.address);
   });
 
+  it('test random number generation', async () => {
+    const randomNumber1 = await lottery.methods.random(new Date().getTime()).call();
+    const randomNumber2 = await lottery.methods.random(new Date().getTime()).call();
+    console.log(randomNumber1, randomNumber2);
+    assert.notEqual(randomNumber1, randomNumber2);
+  });
+
   it('allows one account to enter', async () => {
     await lottery.methods.enter().send({
       from: accounts[0],
@@ -95,7 +102,7 @@ describe('Lottery', () => {
         from: accounts[0],
         value: web3.utils.toWei('0.02', 'ether')
       });
-      await lottery.methods.pickWinner().send({
+      await lottery.methods.pickWinner(new Date().getTime()).send({
         from: accounts[1]
       });
       assert(false);
@@ -112,7 +119,7 @@ describe('Lottery', () => {
 
     const initialBalance = await web3.eth.getBalance(accounts[0]);
 
-    await lottery.methods.pickWinner().send({
+    await lottery.methods.pickWinner(new Date().getTime()).send({
       from: accounts[0]
     });
 

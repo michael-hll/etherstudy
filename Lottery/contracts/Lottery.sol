@@ -26,7 +26,7 @@ contract Lottery {
         players.push(payable(msg.sender));
     }
 
-    function random() private view returns (uint) {
+    function random(uint callerTimestamp) public view returns (uint) {
         // For an explanation of why `abi.encodePacked` is used here, see
         // https://github.com/owanhunte/ethereum-solidity-course-updated-code/issues/1
         //
@@ -37,7 +37,12 @@ contract Lottery {
         return
             uint(
                 keccak256(
-                    abi.encodePacked(block.prevrandao, block.timestamp, players)
+                    abi.encodePacked(
+                        block.prevrandao,
+                        block.timestamp,
+                        players,
+                        callerTimestamp
+                    )
                 )
             );
     }
@@ -46,13 +51,13 @@ contract Lottery {
         return players;
     }
 
-    function pickWinner() public validatePickWinner {
+    function pickWinner(uint callerTimestamp) public validatePickWinner {
         // ****************************
         // modifier code will be put here
         // and the later codes will be put to the placeholder in the modifier
         // ****************************
 
-        uint index = random() % players.length;
+        uint index = random(callerTimestamp) % players.length;
 
         // As of Solidity 0.4.24 at least, `this` is a deprecated way to get the address of the
         // contract. `address(this)` must be used instead.

@@ -15,18 +15,29 @@ const INIT_MESSAGE = 'Hi there!';
 beforeEach(async () => {
   // Get a list of all accounts
   accounts = await web3.eth.getAccounts();
+  //console.log('accounts:', accounts);
 
   // Use one of those accounts to deploy the contract  
-  inbox = await new web3.eth.Contract(abi)
-    .deploy({
-      data: '0x' + evm.bytecode.object,
-      arguments: [INIT_MESSAGE]
-    })
-    .send({
-      from: accounts[0],
-      gas: '1000000', // The gasLimit units of gas
-      //gasPrice: 1000000000 // The gas price in wei to use for this call `transaction`.
-    });
+  // inbox = await new web3.eth.Contract(abi)
+  //   .deploy({
+  //     data: '0x' + evm.bytecode.object,
+  //     arguments: [INIT_MESSAGE]
+  //   })
+  //   .send({
+  //     from: accounts[0],
+  //     gas: '1000000', // The gasLimit units of gas
+  //     //gasPrice: 1000000000 // The gas price in wei to use for this call `transaction`.
+  //   });
+  inbox = await new web3.eth.Contract(abi);
+  let transaction = await inbox.deploy({
+    data: '0x' + evm.bytecode.object,
+    arguments: [INIT_MESSAGE]
+  });
+  inbox = await transaction.send({
+    from: accounts[0],
+    gas: '1000000', // The gasLimit units of gas
+    //gasPrice: 1000000000 // The gas price in wei to use for this call `transaction`.
+  });
   // total spent gas = gasUnits * gasPrice
   // 1 Ether = 1000000000000000000 Wei (18 zeros)
 });
